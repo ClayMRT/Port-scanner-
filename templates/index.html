@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Port Scanner</title>
+    <style>
+        body { background:#0f172a; color:white; text-align:center; font-family:Arial; }
+        input,button { padding:10px; margin:5px; border-radius:5px; border:none; }
+        button { background:#22c55e; color:white; }
+        .open-port { color:#4ade80; }
+    </style>
+</head>
+<body>
+
+<h2>Web Port Scanner</h2>
+
+<form method="POST">
+    <input name="target" placeholder="IP/domain" required>
+    <input name="start_port" type="number" placeholder="Start" required>
+    <input name="end_port" type="number" placeholder="End" required>
+    <br>
+    <button>Scan</button>
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<ul>
+{% for port in open_ports %}
+<li class="open-port">Port {{port}} open</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
